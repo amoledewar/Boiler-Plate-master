@@ -1,0 +1,33 @@
+<br>
+<div class="container">
+  <form #myForm="ngForm">
+    <fieldset>
+      <h1>Sign Up Form</h1>
+      <br>
+
+      <div class="form-group">
+        <input type="text" name="userName" class="form-control" placeholder="Enter name" [(ngModel)]="userName" required #username="ngModel"
+          [ngModelOptions]="{updateOn: 'change'}">
+        <div [hidden]="username.valid || username.pristine" class="alert alert-danger">Name is required</div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="password" class="form-control" placeholder="Enter name" [(ngModel)]="password" required #pass="ngModel"
+          [ngModelOptions]="{updateOn: 'change'}">
+        <div [hidden]="pass.valid || pass.pristine" class="alert alert-danger">Name is required</div>
+      </div>
+      <button type="submit" [disabled]="!myForm.form.dirty" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-danger">Reset</button>
+
+    </fieldset>
+
+  </form>
+  <br>
+  <br>
+  <div *ngIf="this.userName" class="jumbotron">
+    <h2>Name: {{this.userName}}</h2>
+    <h2>Password: {{this.password}}</h2>
+  </div>
+</div>
+
+<app-child [param]="param" (change)="someChange($event)"></app-child>

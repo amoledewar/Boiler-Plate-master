@@ -1,0 +1,30 @@
+<br>
+<div class="container">
+  <form [formGroup]="nameForm">
+    <fieldset>
+      <h1>Sign Up Form</h1>
+      <br>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="enter name" id="userName" formControlName="userName">
+        <div *ngIf="nameForm.controls.userName.errors &&
+         nameForm.controls.userName.errors.minlength  && 
+        !nameForm.controls.userName.pristine" class="alert alert-danger">Required</div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="enter password" formControlName="password">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-danger">Reset</button>
+
+    </fieldset>
+  </form>
+  <br>
+  <br>
+  <div *ngIf="nameForm.value.userName" class="jumbotron">
+    <h2>Name: {{nameForm.value.userName}}</h2>
+    <h2>Password: {{nameForm.value.password}}</h2>
+  </div>
+</div>
